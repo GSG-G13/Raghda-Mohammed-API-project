@@ -14,7 +14,7 @@ const getWeatherData = (location) => {
   const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = () => {
     if (xhr.readyState === 4 && xhr.status === 200) {
-      console.log(xhr.response);
+      // console.log(xhr.response);
       const data = JSON.parse(xhr.response);
       const name = data.name;
       const temp = data.main.temp;
@@ -22,8 +22,9 @@ const getWeatherData = (location) => {
       const description = data.weather[0].description;
       const humidity = data.main.humidity;
       const temp_max = data.main.temp_max;
-      buildPage(name, temp, feels_like, description, humidity, temp_max);
-      // getGif(description); for raghda git gif
+      console.log(description)
+      // buildPage(name, temp, feels_like, description, humidity, temp_max);
+      getGif(description); //for raghda git gif
     }
   };
   xhr.open(
