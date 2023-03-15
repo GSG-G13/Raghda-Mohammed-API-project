@@ -37,4 +37,4 @@ const getWeatherData = (location) => {
   xhr.send();
 };
 
-getWeatherData("Gaza");
+getWeatherData("Saudi Arabia");
