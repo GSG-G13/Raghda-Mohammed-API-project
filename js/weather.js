@@ -13,7 +13,6 @@ const getWeatherData = (location) => {
   const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = () => {
     if (xhr.readyState === 4 && xhr.status === 200) {
-      // console.log(xhr.response);
       const data = JSON.parse(xhr.response);
       const name = data.name;
       const temp = data.main.temp;
@@ -21,9 +20,8 @@ const getWeatherData = (location) => {
       const description = data.weather[0].description;
       const humidity = data.main.humidity;
       const temp_max = data.main.temp_max;
-      console.log(description);
       buildPage(name, temp, feels_like, description, humidity, temp_max);
-      getGif(description); //for raghda git gif
+      getGif(description);
     }
   };
   xhr.open(
@@ -36,6 +34,8 @@ const getWeatherData = (location) => {
   xhr.send();
 };
 
+getWeatherData("Gaza");
+
 const buildPage = (place, t, feels, desc, humid, m) => {
   desc = desc.charAt(0).toUpperCase() + desc.slice(1);
   cityName.textContent = place;
@@ -46,24 +46,7 @@ const buildPage = (place, t, feels, desc, humid, m) => {
   humidity.textContent = "Humidty: " + humid + "%";
 };
 
-// submit.addEventListener("click", (input) => {
-//   getWeather(input.value);
-// });
 submit.onclick = () => {
-  console.log("submit");
   let val = input.value;
   getWeatherData(val);
 };
-
-console.log(input);
-
-input.addEventListener("keyup", (e) => {
-  if (e.keyCode === 13) {
-    e.preventDefault();
-    submit.click();
-  }
-});
-
-// input.addEventListener("click", () => {
-//   input.value = "";
-// });
