@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- meta -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- title -->
+    <title>Weather Project</title>
+    <!-- Links -->
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Domine:wght@500&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- search bar start -->
+    <div class="search">
+      <span class="add-icon">🔍</span>
+      <input
+        type="text"
+        class="search-bar"
+        placeholder="search country or city"
+      />
+    </div>
+    <!-- search bar end -->
+
+    <!-- container start -->
+    <div class="container">
+      <!-- wether card info start -->
+      <div class="weather-info">
+        <div class="card-top">
+          <span class="weather-condition"></span>
+          <h1 class="city"></h1>
+        </div>
+        <div class="card-left">
+          <span class="temp"></span>
+          <span class="deg">°C</span>
+          <div class="card-right">
+            <span class="feelslike"></span>
+            <span class="temp-max"></span>
+            <span class="humidty"></span>
+          </div>
+        </div>
+      </div>
+      <!-- wether card info end -->
+
+      <!-- gif card start -->
+      <div class="gify">
+        <img src="#" alt="gif image" class="weather-gif" />
+      </div>
+      <!-- gif card end -->
+    </div>
+    <!-- container end -->
+    <!-- scripts -->
+    <script src="/js/giffy.js"></script>
+    <script src="/js/weather.js"></script>
+  </body>
+</html>
