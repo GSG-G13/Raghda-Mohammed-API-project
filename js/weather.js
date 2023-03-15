@@ -6,9 +6,8 @@ const max = document.querySelector(".temp-max");
 const humidity = document.querySelector(".humidty");
 const deg = document.querySelector(".deg");
 const input = document.querySelector(".search-bar");
-const submit = document.querySelector(".add");
+const submit = document.querySelector(".add-icon");
 const img = document.querySelector(".weather-gif");
-const body = document.querySelector("body");
 
 const getWeatherData = (location) => {
   const xhr = new XMLHttpRequest();
@@ -18,12 +17,12 @@ const getWeatherData = (location) => {
       const data = JSON.parse(xhr.response);
       const name = data.name;
       const temp = data.main.temp;
-      const c = data.main.feels_like;
+      const feels_like = data.main.feels_like;
       const description = data.weather[0].description;
       const humidity = data.main.humidity;
       const temp_max = data.main.temp_max;
-      console.log(description)
-      // buildPage(name, temp, feels_like, description, humidity, temp_max);
+      console.log(description);
+      buildPage(name, temp, feels_like, description, humidity, temp_max);
       getGif(description); //for raghda git gif
     }
   };
@@ -37,4 +36,34 @@ const getWeatherData = (location) => {
   xhr.send();
 };
 
-getWeatherData("Gaza");
+const buildPage = (place, t, feels, desc, humid, m) => {
+  desc = desc.charAt(0).toUpperCase() + desc.slice(1);
+  cityName.textContent = place;
+  weatherCondition.textContent = desc;
+  temp.textContent = Math.round(t);
+  feelsLike.textContent = "Feels like: " + Math.round(feels) + "°";
+  max.textContent = "Today's high: " + Math.round(m) + "°";
+  humidity.textContent = "Humidty: " + humid + "%";
+};
+
+// submit.addEventListener("click", (input) => {
+//   getWeather(input.value);
+// });
+submit.onclick = () => {
+  console.log("submit");
+  let val = input.value;
+  getWeatherData(val);
+};
+
+console.log(input);
+
+input.addEventListener("keyup", (e) => {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    submit.click();
+  }
+});
+
+// input.addEventListener("click", () => {
+//   input.value = "";
+// });
