@@ -12,11 +12,15 @@ const getGif = (query) => {
 
   xhr.onload = function () {
     if (xhr.readyState == 4 && xhr.status === 200) {
-      let data = JSON.parse(xhr.responseText);
-      imgApi = data.data[0].images.downsized_large.url;
-      let img = document.createElement("img");
-      img.setAttribute("src", imgApi);
-      container.appendChild(img);
+      const data = JSON.parse(xhr.responseText);
+      const dataIndex = data.data;
+      const randomIndex = Math.floor(Math.random() * dataIndex.length);
+      imgApi = data.data[randomIndex].images.downsized_large.url;
+      let img = document.querySelector(".weather-gif");
+      img.src = imgApi;
+      // let img = document.createElement("img");
+      // img.setAttribute("src", imgApi);
+      // container.appendChild(img);
     }
   };
   xhr.send();
