@@ -12,7 +12,7 @@ const getGif = (query) => {
 
   xhr.onload = function () {
     if (xhr.readyState == 4 && xhr.status === 200) {
-      var data = JSON.parse(xhr.responseText);
+      const data = JSON.parse(xhr.responseText);
       const dataIndex = data.data;
       const randomIndex = Math.floor(Math.random() * dataIndex.length);
       imgApi = data.data[randomIndex].images.downsized_large.url;
